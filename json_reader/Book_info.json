@@ -1,0 +1,19 @@
+{"root" :
+[
+{
+	"Book_name" : "War and Piece",
+	"Author" : "L.N.Tolstoy",
+	"Key_words": [
+	"war",
+	"piece",
+	"oak"]
+},
+{
+	"Book_name" : "Metro 2033",
+	"Author" : "D.A.Glukhovsky",
+	"Key_words": [
+	"metro",
+	"Moscow",
+	"war"]
+}]
+}
