@@ -52,7 +52,7 @@ public class HomeController {
                                Model model){
         StudyingGroup studyingGroup = new StudyingGroup(num, curator, fieldOfStudy);
         groupRepository.save(studyingGroup);
-        return "redirect:/";
+        return "redirect:/group/observe";
     }
 
     @GetMapping("/group/{id}/edit")

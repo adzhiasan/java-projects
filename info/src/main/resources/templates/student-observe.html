@@ -6,8 +6,11 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script>
         function myFunction() {
-          //var s = "http://localhost:8080/student/observe/" + document.getElementById("number").value;
-          var s = window.location.href + "/" + document.getElementById("number").value;
+          var s = "http://localhost:8080/student/observe/" + document.getElementById("number").value;
+          //var s = window.location.href + "/" + document.getElementById("number").value;
+          //var s = window.location.href + document.getElementById("number").value;
+          //var s = location.hostname + "/student/observe" + document.getElementById("number").value;
+          //var s = location.hostname + "/observe" + document.getElementById("number").value;
           document.location.href = s;
         }
     </script>
@@ -16,10 +19,19 @@
 <header th:insert="layouts/header :: header"></header>
 
 <div class="container mt-5 mb-5">
+    <h3>Введите номер группы, студентов которой Вы хотите увидеть</h3><br>
 <!--    <form th:action="'/student/observe/' + ${num}" method="get">-->
 <!--    <form method="get">-->
-        <input type="number" id="number" name="num" placeholder="Группа" class="form-control"><br>
-        <button onclick="myFunction()" class="btn btn-warning" type="submit">Выбрать</button>
+
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" id="number" placeholder="Номер группы" aria-label="Номер группы" aria-describedby="basic-addon2">
+        <div class="input-group-append">
+            <button onclick="myFunction()" class="btn btn-outline-secondary" type="button">Выбрать</button>
+        </div>
+    </div>
+
+<!--    <input type="number" id="number" name="num" placeholder="Группа" class="form-control"><br>-->
+<!--    <button onclick="myFunction()" class="btn btn-dark" type="submit">Выбрать</button>-->
 <!--    </form>-->
 </div>
 
@@ -27,13 +39,15 @@
     <thead>
     <tr>
         <th scope="col">#</th>
-        <th scope="col">Имя</th>
         <th scope="col">Фамилия</th>
+        <th scope="col">Имя</th>
         <th scope="col">Отчество</th>
 <!--        <th scope="col">Дата рождения</th>-->
         <th scope="col">Пол</th>
         <th scope="col">Год поступления</th>
         <th scope="col">Группа</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
     </tr>
     </thead>
     <tbody th:each="item: ${students}">
@@ -46,10 +60,15 @@
         <td th:text="${item.gender}"/>
         <td th:text="${item.entryYear}"/>
         <td th:text="${item.studyingGroup.num}"/>
-        <td><a th:href="'/student/' + ${item.student_id} + '/edit'">*</a></td>
+<!--        <td><a th:href="'/student/' + ${item.student_id} + '/edit'">*</a></td>-->
+        <td>
+            <form th:action="'/student/' + ${item.student_id} + '/edit'">
+                <button class="btn btn-light" type="submit">Ред.</button>
+            </form>
+        </td>
         <td>
             <form th:action="'/student/' + ${item.student_id} + '/remove'" method="post">
-                <button class="btn btn-warning" type="submit">Delete</button>
+                <button class="btn btn-danger" type="submit">Удалить</button>
             </form>
         </td>
     </tr>
