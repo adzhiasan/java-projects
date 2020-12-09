@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Просмотр содержимого таблицы "Группы"</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<header th:insert="layouts/header :: header"></header>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Номер</th>
+        <th scope="col">Куратор</th>
+        <th scope="col">Направление обучения</th>
+        <th scope="col">Детальнее</th>
+    </tr>
+    </thead>
+    <tbody th:each="item: ${studyingGroups}">
+        <tr>
+            <th th:text="${item.id}" scope="row"/>
+            <td th:text="${item.num}"/>
+            <td th:text="${item.curator}"/>
+            <td th:text="${item.fieldOfStudy}"/>
+            <td><a th:href="'/group/' + ${item.id} + '/edit'">*</a></td>
+<!--            <td>-->
+<!--                <form th:action="'/group/' + ${item.id} + '/remove'" method="post">-->
+<!--                    <button class="btn btn-warning" type="submit">Delete</button>-->
+<!--                </form>-->
+<!--            </td>-->
+        </tr>
+
+    </tbody>
+</table>
+</body>
+</html>

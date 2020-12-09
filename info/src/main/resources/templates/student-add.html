@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Добавление студента</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<header th:insert="layouts/header :: header"></header>
+<div class="container mt-5 mb-5">
+    <h1>Добавление записи о студенте</h1>
+    <form action="/student/add/" method="post">
+        <input type="text" name="surname" placeholder="Фамилия студента" class="form-control"><br>
+        <input type="text" name="name" placeholder="Имя студента" class="form-control"><br>
+        <input type="text" name="fatherName" placeholder="Отчество студента" class="form-control"><br>
+<!--        <input type="datetime-local" name="birthDate" placeholder="Дата рождения студента" class="form-control"><br>-->
+        <input type="text" name="gender" placeholder="Пол студента" class="form-control"><br>
+        <input type="number" name="entryYear" placeholder="Год поступления" class="form-control"><br>
+        <input type="number" name="studyingGroupNum" placeholder="Группа" class="form-control"><br>
+        <button type="submit" class="btn btn-success">Добавить</button>
+    </form>
+</div>
+
+</body>
+</html>

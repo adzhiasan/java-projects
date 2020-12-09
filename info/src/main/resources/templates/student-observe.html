@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Просмотр содержимого таблицы "Студенты"</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<header th:insert="layouts/header :: header"></header>
+
+<!--<div class="container mt-5 mb-5">-->
+<!--<form action="/student/add/" method="post">-->
+<!--    <input type="text" name="surname" placeholder="Фамилия студента" class="form-control"><br>-->
+<!--    <input type="number" name="studyingGroupNum" placeholder="Группа" class="form-control"><br>-->
+<!--    <a href="'/group/observe/' + ${el.id}" class="btn btn-success">Выбрать</a>-->
+<!--</form>-->
+<!--</div>-->
+
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Имя</th>
+        <th scope="col">Фамилия</th>
+        <th scope="col">Отчество</th>
+<!--        <th scope="col">Дата рождения</th>-->
+        <th scope="col">Пол</th>
+        <th scope="col">Год поступления</th>
+        <th scope="col">Группа</th>
+    </tr>
+    </thead>
+    <tbody th:each="item: ${students}">
+    <tr>
+        <th th:text="${item.student_id}" scope="row"/>
+        <td th:text="${item.surname}"/>
+        <td th:text="${item.name}"/>
+        <td th:text="${item.fatherName}"/>
+<!--        <td th:text="${item.birthDate}"/>-->
+        <td th:text="${item.gender}"/>
+        <td th:text="${item.entryYear}"/>
+        <td th:text="${item.studyingGroup.num}"/>
+        <td><a th:href="'/student/' + ${item.student_id} + '/edit'">*</a></td>
+        <td>
+            <form th:action="'/student/' + ${item.student_id} + '/remove'" method="post">
+                <button class="btn btn-warning" type="submit">Delete</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Редактирование группы</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<header th:insert="layouts/header :: header"></header>
+<div class="container mt-5 mb-5">
+    <h1>Редактирование записи о группе</h1>
+    <div th:each="item : ${group}">
+        <form method="post">
+            <input type="number" th:value="${item.num}" name="num" placeholder="Номер группы" class="form-control"><br>
+            <input type="text" th:value="${item.curator}" name="curator" placeholder="Куратор" class="form-control"><br>
+            <input type="text" th:value="${item.fieldOfStudy}" name="fieldOfStudy" placeholder="Направление обучения" class="form-control"><br>
+            <button type="submit" class="btn btn-success">Редактировать</button>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Редактирование студента</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<header th:insert="layouts/header :: header"></header>
+<div class="container mt-5 mb-5">
+    <h1>Редактирование записи о студенте</h1>
+    <div th:each="item : ${student}">
+        <form method="post">
+            <input type="text" th:value="${item.surname}" name="surname" placeholder="Фамилия студента" class="form-control"><br>
+            <input type="text" th:value="${item.name}" name="name" placeholder="Имя студента" class="form-control"><br>
+            <input type="text" th:value="${item.fatherName}" name="fatherName" placeholder="Отчество студента" class="form-control"><br>
+            <input type="text" th:value="${item.gender}" name="gender" placeholder="Пол студента" class="form-control"><br>
+            <input type="number" th:value="${item.entryYear}" name="entryYear" placeholder="Год поступления" class="form-control"><br>
+            <input type="number" th:value="${item.studyingGroup.num}" name="studyingGroupNum" placeholder="Группа" class="form-control"><br>
+            <button type="submit" class="btn btn-success">Редактировать</button>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
