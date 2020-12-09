@@ -4,17 +4,24 @@
     <title>Просмотр содержимого таблицы "Студенты"</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script>
+        function myFunction() {
+          //var s = "http://localhost:8080/student/observe/" + document.getElementById("number").value;
+          var s = window.location.href + "/" + document.getElementById("number").value;
+          document.location.href = s;
+        }
+    </script>
 </head>
 <body>
 <header th:insert="layouts/header :: header"></header>
 
-<!--<div class="container mt-5 mb-5">-->
-<!--<form action="/student/add/" method="post">-->
-<!--    <input type="text" name="surname" placeholder="Фамилия студента" class="form-control"><br>-->
-<!--    <input type="number" name="studyingGroupNum" placeholder="Группа" class="form-control"><br>-->
-<!--    <a href="'/group/observe/' + ${el.id}" class="btn btn-success">Выбрать</a>-->
-<!--</form>-->
-<!--</div>-->
+<div class="container mt-5 mb-5">
+<!--    <form th:action="'/student/observe/' + ${num}" method="get">-->
+<!--    <form method="get">-->
+        <input type="number" id="number" name="num" placeholder="Группа" class="form-control"><br>
+        <button onclick="myFunction()" class="btn btn-warning" type="submit">Выбрать</button>
+<!--    </form>-->
+</div>
 
 <table class="table">
     <thead>

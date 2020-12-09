@@ -90,6 +90,18 @@ public class HomeController {
         return "student-observe";
     }
 
+    @GetMapping("/student/observe/{num}")
+    public String observeChosenStudents(@PathVariable(value = "num") int num,
+                                        Model model) {
+        int numn = (int)num;
+        StudyingGroup group = groupRepository.findGroupByNum(num);
+        Iterable<Student> students = studentRepository.findByGroup(group);
+        model.addAttribute("students", students);
+        return "student-observe";
+    }
+
+
+
     @GetMapping("/student/add")
     public String studentAdd(Model model) {
         Iterable<Student> students = studentRepository.findAll();
